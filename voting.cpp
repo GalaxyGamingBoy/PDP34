@@ -11,6 +11,8 @@ std::string upperString;
 std::vector<std::string> lowerParameters;
 std::string lowerString;
 
+std::vector<std::string> totalVotes;
+
 int votingData[2]; // 0: Total, 1: Voted
 int totalCandidates;
 // Code
@@ -35,6 +37,24 @@ void processData(){
     totalCandidates = std::stoi(upperParameters[2]);
 
     std::cout << "Total: " << votingData[0] << "\nVoted: " << votingData[1] << "\nCandidates: " << totalCandidates << std::endl;
+
+    for (int i; i < votingData[1]; i++) {
+        int lastDone;
+        if(i % 2 == 0){
+            std::cout << i << std::endl;
+            totalVotes.push_back(lowerParameters[i]);
+            lastDone = i;
+        }else{
+            if(i != lastDone){
+                totalVotes.push_back(lowerParameters[i+1]);
+                std::cout << i+1 << std::endl;
+            }
+        }
+    }
+
+    // for(auto i : totalVotes){
+    //     std::cout << i << std::endl;
+    // }
 }
 
 void readFile(std::string file){
