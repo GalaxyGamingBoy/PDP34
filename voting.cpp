@@ -9,8 +9,9 @@ std::vector<std::string> upperParameters;
 std::string upperString;
 
 // Code
-std::vector<std::string> splitString(char splitWith, std::stringstream SSIn){
+std::vector<std::string> splitString(char splitWith, std::string line){
     std::string tmp;
+    std::stringstream SSIn(line);
     std::vector<std::string> returnStrings;
     
     while(std::getline(SSIn, tmp, splitWith)){
@@ -24,10 +25,6 @@ void readFile(std::string file){
     std::ifstream fileOpen(file);
     std::getline(fileOpen, upperString);
     fileOpen.close();
-
-    std::string tmp;
-    std::stringstream SS(upperString);
-    std::vector<std::string> result = splitString(' ', SS);
 }
 
 int main(){
