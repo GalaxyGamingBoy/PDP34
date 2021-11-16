@@ -5,11 +5,8 @@
 #include <string>
 
 // Variables
-std::vector<std::string> upperParameters;
-std::string upperString;
-
-std::vector<std::string> lowerParameters;
-std::string lowerString;
+std::vector<std::string> parameters[2];
+std::string strings[2];
 
 std::vector<std::string> totalVotes;
 
@@ -37,26 +34,26 @@ std::vector<std::string> splitString(char splitWith, std::string line){
 
 void processData(){
     // Split Strings
-    upperParameters = splitString(' ', upperString);
-    lowerParameters = splitString(' ', lowerString);
+    parameters[1] = splitString(' ', strings[1]);
+    parameters[0] = splitString(' ', strings[0]);
 
     // Pass Parameters from split strings to variables
-    votingData[0] = std::stoi(upperParameters[0]);
-    votingData[1] = std::stoi(upperParameters[4]);
-    totalCandidates = std::stoi(upperParameters[2]);
+    votingData[0] = std::stoi(parameters[1][0]);
+    votingData[1] = std::stoi(parameters[1][4]);
+    totalCandidates = std::stoi(parameters[1][2]);
 
     // Add all votes that are specified
     for (int i; i < votingData[1] * 2; i++) {
         if(i % 2 == 0){
-            totalVotes.push_back(lowerParameters[i]);
+            totalVotes.push_back(parameters[0][i]);
         }
     }
 }
 
 void readFile(std::string file){
     std::ifstream fileOpen(file);
-    std::getline(fileOpen, upperString);
-    std::getline(fileOpen, lowerString);
+    std::getline(fileOpen, strings[1]);
+    std::getline(fileOpen, strings[0]);
     fileOpen.close();
 }
 
