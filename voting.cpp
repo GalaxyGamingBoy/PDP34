@@ -10,23 +10,23 @@ std::string strings[2];
 
 std::vector<std::string> totalVotes;
 
-int votingData[2]; // 0: Total, 1: Voted
-int totalCandidates;
+int votingData[3]; // 0: Total, 1: Voted, 2: Candidates
+
 // Code
 void printData(){
-    std::cout << "Total: " << votingData[0] << "\nVoted: " << votingData[1] << "\nCandidates: " << totalCandidates << std::endl;
+    std::cout << "Total: " << votingData[0] << "\nVoted: " << votingData[1] << "\nCandidates: " << votingData[2] << std::endl;
     for (auto i : totalVotes){
         std::cout << i << std::endl;
     }
 }
 
-std::vector<std::string> splitString(char splitWith, std::string line){
-    std::string tmp;
-    std::stringstream SSIn(line);
+std::vector<std::string> splitString(char splitWithCharacter, std::string stringIn){
+    std::string tmpData;
+    std::stringstream StringStream(stringIn);
     std::vector<std::string> returnStrings;
     
-    while(std::getline(SSIn, tmp, splitWith)){
-        returnStrings.push_back(tmp);
+    while(std::getline(StringStream, tmpData, splitWithCharacter)){
+        returnStrings.push_back(tmpData);
     }
 
     return returnStrings;
@@ -40,7 +40,7 @@ void processData(){
     // Pass Parameters from split strings to variables
     votingData[0] = std::stoi(parameters[1][0]);
     votingData[1] = std::stoi(parameters[1][4]);
-    totalCandidates = std::stoi(parameters[1][2]);
+    votingData[2] = std::stoi(parameters[1][2]);
 
     // Add all votes that are specified
     for (int i; i < votingData[1] * 2; i++) {
@@ -51,6 +51,7 @@ void processData(){
 }
 
 void readFile(std::string file){
+    // Open file, read to end and save line data
     std::ifstream fileOpen(file);
     std::getline(fileOpen, strings[1]);
     std::getline(fileOpen, strings[0]);
