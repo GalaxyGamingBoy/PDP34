@@ -1,2 +1,2 @@
 # Project Info
-[Google Docs for the goa lof the project](https://drive.google.com/file/d/1VE9NlYmMYtjzOUcbSio-3cMAVdsJhVUD/view)
+[Google Docs for the goal of the project](https://drive.google.com/file/d/1VE9NlYmMYtjzOUcbSio-3cMAVdsJhVUD/view)
